@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUDICO Samarinda — AKHMAD KHAIRUL ST</title>
+<style>
+  :root {
+    --bg-color: #0a0a1a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(254, 180, 123, 0.3);
+    --primary-gradient: linear-gradient(135deg, #feb47b, #ff7e5f, #e94560);
+    --text-color: #e0e0e0;
+    --accent-color: #feb47b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-color);
+    background-image: linear-gradient(165deg, #0a0a1a 0%, #16213e 40%, #0f3460 75%, #1a1a2e 100%);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(10, 10, 26, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(233, 69, 96, 0.2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(90deg, #e94560, #ff7e5f, #feb47b);
+    padding: 30px 20px 25px;
+    text-align: center;
+    color: #fff;
+  }
+  .header h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    font-weight: 900;
+  }
+  .header p {
+    margin-top: 6px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    opacity: 0.95;
+    font-weight: 600;
+  }
+
+  /* Profile Photo */
+  .photo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: -60px;
+    position: relative;
+    z-index: 3;
+  }
+  .photo {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    padding: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 30px rgba(254,180,123,0.4);
+  }
+  .photo-inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f3460;
+    font-weight: 800;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.3;
+  }
+
+  /* Name Block */
+  .name-block {
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
+  .name-block h2 {
+    font-size: 26px;
+    letter-spacing: 2px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+  .role {
+    font-size: 13px;
+    color: #a8dadc;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .tagline {
+    font-size: 13px;
+    font-style: italic;
+    color: #ccc;
+    line-height: 1.4;
+    padding: 10px 15px;
+    border-top: 1px solid rgba(254,180,123,0.3);
+    border-bottom: 1px solid rgba(254,180,123,0.3);
+    margin-top: 6px;
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 16px 24px;
+  }
+  .section-title {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+  }
+  .section p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Stats */
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(254,180,123,0.08);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 14px 6px;
+    margin-top: 12px;
+  }
+  .stats div { text-align: center; }
+  .stats .num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--accent-color);
+  }
+  .stats .lbl {
+    font-size: 11px;
+    color: #ccc;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* Pillars Grid */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .pillar {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pillar .icon { font-size: 26px; }
+  .pillar .info .label {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent-color);
+    letter-spacing: 0.5px;
+  }
+  .pillar .info .desc {
+    font-size: 12px;
+    color: #ddd;
+    margin-top: 2px;
+  }
+
+  /* Peluang Box */
+  .peluang {
+    background: var(--card-bg);
+    border-left: 4px solid #e94560;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .peluang strong { color: var(--accent-color); }
+
+  /* Contact Links / Buttons */
+  .contact {
+    background: linear-gradient(135deg, #0f3460, #e94560);
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .contact p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .contact strong { color: var(--accent-color); }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    color: #0f3460;
+    font-weight: 800;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+  }
+  .btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    transform: translateY(-2px);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 14px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 900;
+    background: #06060f;
+    color: var(--accent-color);
+  }
+
+  @media(min-width: 500px) {
+    .pillars {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .pillar {
+      flex-direction: column;
+      text-align: center;
+      padding: 14px 8px;
+    }
+    .pillar .icon { margin-bottom: 4px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🚀 MUDICO SAMARINDA</h1>
+      <p>MULTI USAHA DIGITAL COMMUNITY</p>
+    </div>
+
+    <!-- Foto Profil -->
+    <div class="photo-wrap">
+      <div class="photo">
+        <div class="photo-inner">AKHMAD KHAIRUL ST</div>
+      </div>
+    </div>
+
+    <!-- Nama & Jabatan -->
+    <div class="name-block">
+      <h2>AKHMAD KHAIRUL ST</h2>
+      <div class="role">MANAGER MUDICO SAMARINDA</div>
+      <div class="tagline">
+        "Manager adalah pekerjaan saya, bergaul dan berkomunitas adalah hobby ku, saling mengingatkan dan bernasehat kebenaran, tetap FOCUS untuk mencapai TUJUAN."
+      </div>
+    </div>
+
+    <!-- Tentang Mudico -->
+    <div class="section">
+      <div class="section-title">🏢 Tentang MUDICO</div>
+      <p>Super-App komunitas asal Indonesia, lahir dari komunitas <strong style="color:var(--accent-color)">"Maju Jos"</strong> (2020), resmi diluncurkan <strong style="color:var(--accent-color)">Oktober 2025</strong> oleh PT Multi Usaha Digital — Pasuruan, Jawa Timur.</p>
+      <div class="stats">
+        <div><div class="num">18K+</div><div class="lbl">MITRA</div></div>
+        <div><div class="num">24</div><div class="lbl">KANTOR</div></div>
+        <div><div class="num">200K+</div><div class="lbl">ANGGOTA</div></div>
+      </div>
+    </div>
+
+    <!-- 3 Pilar -->
+    <div class="section">
+      <div class="section-title">🎯 3 Pilar Layanan</div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="icon">🎓</div>
+          <div class="info">
+            <span class="label">MUDICO SKILL</span>
+            <div class="desc">Edukasi Digital Marketing Gratis</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="icon">🏪</div>
+          <div class="info">
+            <span class="label">E-COMMERCE</span>
+            <div class="desc">UMKM Tanpa Potongan Berat</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="icon">🛵</div>
+          <div class="info">
+            <span class="label">OJEK ONLINE</span>
+            <div class="desc">Mitra Driver Reguler & Prioritas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peluang -->
+    <div class="section">
+      <div class="section-title">🎁 Peluang untuk Anda</div>
+      <div class="peluang">
+        <p>
+          🚗 <strong>Driver:</strong> Penghasilan adil & transparan<br>
+          🏪 <strong>UMKM:</strong> Lapak digital tanpa ribet<br>
+          💻 <strong>Talenta Digital:</strong> Skill marketing gratis<br>
+          🛵 <strong>Masyarakat:</strong> Transportasi aman & terjangkau
+        </p>
+      </div>
+    </div>
+
+    <!-- Kontak & Tautan -->
+    <div class="contact">
+      <p>📍 <strong>Jl. DR. Wahidin Sudiro Husodo No. 38</strong><br>
+      <span style="font-size:12px;">Dadi Mulya, Samarinda Ulu, Samarinda, Kaltim</span></p>
+      <p>📱 <strong>WA/Telp:</strong> 0811919301</p>
+      
+      <div class="btn-group">
+        <a href="https://lihat.link/SMDMUDICO" target="_blank" class="btn">🔗 BUKA LINKTREE UTAMA</a>
+        <a href="https://wa.me/62811919301" target="_blank" class="btn" style="background:#25d366; color:#fff;">💬 HUBUNGI VIA WHATSAPP</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      "KEDAULATAN DIGITAL UNTUK SAMARINDA!"
+    </div>
+  </div>
+
+</body>
+</html>
